@@ -1,0 +1,25 @@
+{
+  "name": "gamegine",
+  "version": "1.0.0",
+  "description": "Lightweight js game/animation engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "cp src/gamegine.js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajakubo1/gamegine.git"
+  },
+  "keywords": [
+    "canvas",
+    "game",
+    "animation"
+  ],
+  "author": "Adam Jakubowski <ajakubo1@gmail.com> (http://thedimgames.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajakubo1/gamegine/issues"
+  },
+  "homepage": "https://github.com/ajakubo1/gamegine#readme"
+}
