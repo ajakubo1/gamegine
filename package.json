@@ -4,8 +4,9 @@
   "description": "Lightweight js game/animation engine",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    "prepublish": "cp src/gamegine.js ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "cp src/gamegine.js . ; uglifyjs gamegine.js -c -m --source-map gamegine.map -o gamegine.min.js",
+    "postpublish": "rm gamegine.js gamegine.map gamegine.min.js"
   },
   "repository": {
     "type": "git",
