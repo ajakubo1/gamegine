@@ -4,6 +4,6 @@
  authors:
    - Adam Jakubowski
  resources:
-   - /src/gamegine.js
+   - https://rawgit.com/ajakubo1/gamegine/master/src/gamegine.js
  normalize_css: no
  ...
