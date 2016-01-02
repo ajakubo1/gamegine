@@ -35,6 +35,7 @@ bit to make it work ;))
     * ``height`` - height (in pixels) which should be set on canvas
     * ``fps`` (defaults to ``60``) - how many FPS you'd like to run
     * ``ops`` (defaults to ``fps``) - how many OPS you'd like to run
+    * ``context`` (defaults to ``2d``) - what canvas context to use
 - ``callback`` - an object/function which should have 3 functions available:
     * ``render`` - which is called when rendering frame should occur (called with one argument, which is canvas 2d 
     context)
