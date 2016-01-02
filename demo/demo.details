@@ -1,0 +1,9 @@
+---
+ name: Gamegine Demo
+ description: What basic stuff can you do with Gamegine
+ authors:
+   - Adam Jakubowski
+ resources:
+   - /src/gamegine.js
+ normalize_css: no
+ ...

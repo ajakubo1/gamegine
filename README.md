@@ -13,50 +13,16 @@ To use library in your project, you have to include gamegine.js in your html fil
 <script src="node_modules/gamegine/gamegine.min.js"></script>
 ```
 
-## Basic usage
-
-Create config file:
-
-```javascript
-var config = {
-    canvas: "canvas",
-    width: 800,
-    height: 600,
-    fps: 30
-};
-```
-
-Create your game object (make sure that you have ``render`` and ``logic`` functions exposed):
-
-```javascript
-var game = function () {
-
-    //CODE GOES HERE
-
-    return {
-        render: function (context) {
-        
-        },
-        logic: function () {
-                       
-        }
-    }
-}
-game = new game();
-```
-
-Init and start the library:
-
-```javascript
-var gamegine = new GAMEGINE(config, game);
-gamegine.start();
-```
-
-And from now on you can enjoy using it.
-
-## Demos
+## Demo
 
 For demo go [here](http://trash.thedimgames.com/gamegine/samples/).
+
+You can also check it on [jsFiddle](http://jsfiddle.net/gh/get/library/pure/gamegine/tree/master/demo)
+
+
+## API
+
+
 
 ## From the author
 
