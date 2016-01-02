@@ -26,8 +26,13 @@ var GAMEGINE = function (config, callback) {
     this.width = config.width;
     this.height = config.height;
     this.canvas = config.canvas;
-    if (!this.canvas instanceof HTMLElement) {
-        this.canvas = document.getElementById(config.canvas);
+    if (!(this.canvas instanceof HTMLElement)) {
+        this.canvas = document.getElementById(this.canvas);
+    }
+    if (this.canvas === null) {
+        this.canvas = document.createElement('canvas');
+        this.canvas.id = config.canvas;
+        document.body.appendChild(this.canvas);
     }
     this.canvas.width  = this.width;
     this.canvas.height = this.height;
