@@ -38,7 +38,7 @@ var GAMEGINE = function (config, callback) {
     }
     this.canvas.width  = this.width;
     this.canvas.height = this.height;
-    this.context = this.canvas.getContext("2d");
+    this.context = this.canvas.getContext(config.context || "2d");
 
     this.frame = function(frameTime) {
         var tickCount = Math.floor((frameTime - self.updateTime) / self.tickLength);

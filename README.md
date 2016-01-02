@@ -35,10 +35,11 @@ bit to make it work ;))
     * ``height`` - height (in pixels) which should be set on canvas
     * ``fps`` (defaults to ``60``) - how many FPS you'd like to run
     * ``ops`` (defaults to ``fps``) - how many OPS you'd like to run
-- ``callback`` - an object/function which should have 2 functions available:
+- ``callback`` - an object/function which should have 3 functions available:
     * ``render`` - which is called when rendering frame should occur (called with one argument, which is canvas 2d 
     context)
     * ``logic`` - which is called when operation occurs (logic for the frame)
+    * ``init`` - which is called when ``Gamegine`` object gets initialized
 
 ## From the author
 
