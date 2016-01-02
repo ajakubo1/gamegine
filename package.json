@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "cp src/gamegine.js . ; uglifyjs gamegine.js -c -m --source-map gamegine.map -o gamegine.min.js",
     "postpublish": "rm gamegine.js gamegine.map gamegine.min.js",
+    "precommit": "uglifyjs src/gamegine.js -c -m --source-map src/gamegine.map -o src/gamegine.min.js",
     "commit": "git add . && git commit -m "
   },
   "repository": {

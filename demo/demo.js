@@ -1,4 +1,4 @@
-window.addEvent('domready', function() {
+window.addEventListener('DOMContentLoaded', function() {
     var config = {
         canvas: document.getElementById('canvas'),
         width: 800,

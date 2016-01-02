@@ -17,7 +17,7 @@ To use library in your project, you have to include gamegine.js in your html fil
 
 For demo go [here](http://trash.thedimgames.com/gamegine/samples/).
 
-You can also check it on [jsFiddle](http://jsfiddle.net/gh/get/library/pure/gamegine/tree/master/demo)
+You can also check it on [jsFiddle](http://jsfiddle.net/gh/get/library/pure/ajakubo1/gamegine/tree/master/demo)
 
 
 ## API
