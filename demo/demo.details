@@ -6,4 +6,5 @@
  resources:
    - https://rawgit.com/ajakubo1/gamegine/master/src/gamegine.js
  normalize_css: no
+ wrap: l
  ...

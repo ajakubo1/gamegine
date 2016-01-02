@@ -1,5 +1,5 @@
 var config = {
-    canvas: document.getElementById('canvas'),
+    canvas: 'canvas',
     width: 800,
     height: 600,
     fps: 30
