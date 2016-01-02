@@ -10,6 +10,7 @@
  * @param config.height - height (in pixels) which should be set on canvas
  * @param [config.fps=60] - how many FPS you'd like to run
  * @param [config.ops=config.fps] - how many OPS you'd like to run
+ * @param [config.context="2d"] - which canvas context you'd like to get
  * @param callback - callback for logic() and render() functions
  * @param callback.logic - called whenever application logic has to be updated
  * @param callback.render - called once every frame, when display should be re-drawn
@@ -22,6 +23,7 @@ var GAMEGINE = function (config, callback) {
     this.updateTime;
     this.fps = config.fps || 60;
     this.ops = config.ops || config.fps;
+    this.leftOps = 0;
     this.tickLength = 1000.0 / this.fps;
     this.width = config.width;
     this.height = config.height;
@@ -43,7 +45,9 @@ var GAMEGINE = function (config, callback) {
 
         if (tickCount > 0) {
             self.updateTime += self.tickLength * tickCount;
-
+            tickCount *= self.ops / self.fps + self.leftOps;
+            self.leftOps = tickCount - Math.floor(tickCount);
+            tickCount = Math.floor(tickCount);
             while (tickCount) {
                 self.callback.logic();
                 tickCount -= 1;
