@@ -25,9 +25,8 @@ var GAMEGINE = function (config, callback) {
     this.tickLength = 1000.0 / this.fps;
     this.width = config.width;
     this.height = config.height;
-    if (config.canvas instanceof HTMLElement) {
-        this.canvas = config.canvas;
-    } else {
+    this.canvas = config.canvas;
+    if (!this.canvas instanceof HTMLElement) {
         this.canvas = document.getElementById(config.canvas);
     }
     this.canvas.width  = this.width;
