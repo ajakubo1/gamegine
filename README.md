@@ -45,4 +45,3 @@ bit to make it work ;))
 ## From the author
 
 If you have any suggestions for the library, write me an email (ajakubo1@gmail.com) or open new issue on github!
-or

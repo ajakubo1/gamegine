@@ -22,7 +22,7 @@ var GAMEGINE = function (config, callback) {
     this.running = false;
     this.updateTime;
     this.fps = config.fps || 60;
-    this.ops = config.ops || config.fps;
+    this.ops = config.ops || this.fps;
     this.leftOps = 0;
     this.tickLength = 1000.0 / this.fps;
     this.width = config.width;
