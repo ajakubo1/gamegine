@@ -8,7 +8,6 @@
 </head>
 <body>
     <script src="../src/gamegine.js"></script>
-    <script src="https://raw.githubusercontent.com/darsain/fpsmeter/master/dist/fpsmeter.js"></script>
     <script>
 
 
@@ -20,8 +19,6 @@
                 fps: 60,
                 ops: 60
             };
-
-            var meter = new FPSMeter();
 
             var GAME = function () {
                 this.square;
@@ -43,10 +40,8 @@
             };
 
             GAME.prototype.render = function (context) {
-                meter.tickStart();
-                //context.clearRect(0, 0, config.width, config.height);
+                context.clearRect(0, 0, config.width, config.height);
                 context.drawImage(this.square, this.square_x, this.square_y);
-                meter.tick();
             };
 
             GAME.prototype.logic = function () {
