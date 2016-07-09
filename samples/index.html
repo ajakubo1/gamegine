@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div style="width:100%;">
+</div>
+
     <script src="../src/gamegine.js"></script>
     <script>
 
@@ -16,7 +19,6 @@
                 canvas: 'canvas',
                 width: 800,
                 height: 600,
-                fps: 60,
                 ops: 60
             };
 
@@ -24,7 +26,7 @@
                 this.square;
                 this.square_x = 5;
                 this.square_y = 5;
-                this.step = 10;
+                this.step = 10 / (1000.0 / 60.0);
 
                 this.init = function () {
                     this.square = document.createElement('canvas');
@@ -44,23 +46,35 @@
                 context.drawImage(this.square, this.square_x, this.square_y);
             };
 
-            GAME.prototype.logic = function () {
-                if(this.square_x === 5 && this.square_y === 5) {
-                    this.square_x += this.step;
-                } else if (this.square_y === 5 && this.square_x === config.width - 105) {
-                    this.square_y += this.step;
-                } else if (this.square_y === 5) {
-                    this.square_x += this.step;
-                } else if (this.square_x === config.width - 105 && this.square_y === config.height - 105) {
-                    this.square_x -= this.step;
-                } else if (this.square_x === 5 && this.square_y === config.height - 105) {
-                    this.square_y -= this.step;
-                } else if (this.square_y === config.height - 105) {
-                    this.square_x -= this.step;
-                } else if (this.square_x === config.width - 105) {
-                    this.square_y += this.step;
-                } else if (this.square_x === 5) {
-                    this.square_y -= this.step;
+            GAME.prototype.logic = function (delta) {
+                if(this.square_x <= 5 && this.square_y <= 5) {
+                    this.square_x = 5;
+                    this.square_y = 5;
+                    this.square_x += this.step * delta;
+                } else if (this.square_y <= 5 && this.square_x >= config.width - 105) {
+                    this.square_x = config.width - 105;
+                    this.square_y = 5;
+                    this.square_y += this.step * delta;
+                } else if (this.square_y <= 5) {
+                    this.square_y = 5;
+                    this.square_x += this.step * delta;
+                } else if (this.square_x >= config.width - 105 && this.square_y >= config.height - 105) {
+                    this.square_x = config.width - 105;
+                    this.square_y = config.height - 105;
+                    this.square_x -= this.step * delta;
+                } else if (this.square_x <= 5 && this.square_y >= config.height - 105) {
+                    this.square_x = 5;
+                    this.square_y = config.height - 105;
+                    this.square_y -= this.step * delta;
+                } else if (this.square_y >= config.height - 105) {
+                    this.square_y = config.height - 105;
+                    this.square_x -= this.step * delta;
+                } else if (this.square_x >= config.width - 105) {
+                    this.square_x = config.width - 105;
+                    this.square_y += this.step * delta;
+                } else if (this.square_x <= 5) {
+                    this.square_x = 5;
+                    this.square_y -= this.step * delta;
                 }
             };
 

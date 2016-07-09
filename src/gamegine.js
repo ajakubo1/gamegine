@@ -8,8 +8,7 @@
  * @param config.canvas - id of DOM canvas element you want to work on
  * @param config.width - width (in pixels) which should be set on canvas
  * @param config.height - height (in pixels) which should be set on canvas
- * @param [config.fps=60] - how many FPS you'd like to run
- * @param [config.ops=config.fps] - how many OPS you'd like to run
+ * @param [config.ops=60] - how many OPS you'd like to run
  * @param [config.context="2d"] - which canvas context you'd like to get
  * @param callback - callback for logic() and render() functions
  * @param callback.logic - called whenever application logic has to be updated
@@ -17,16 +16,12 @@
  * @constructor
  */
 var GAMEGINE = function (config, callback) {
-
     var self = this;
     this.callback = callback;
     this.running = false;
-    this.updateTimeRedraw;
-    this.updateTimeStep;
-    this.fps = config.fps || 60;
-    this.ops = config.ops || this.fps;
-    this.tickLengthRedraw = 1000.0 / this.fps;
-    this.tickLengthStep = 1000.0 / this.ops;
+    this.updateTime;
+    this.ops = config.ops || 60.0;
+    this.tickLength = 1000.0 / this.ops;
     this.width = config.width;
     this.height = config.height;
     this.canvas = config.canvas;
@@ -43,37 +38,19 @@ var GAMEGINE = function (config, callback) {
     this.context = this.canvas.getContext(config.context || "2d");
 
     this.redraw = function(frameTime) {
-        /*var tickCount = Math.floor((frameTime - self.updateTimeRedraw) / self.tickLengthRedraw);
-
-        if (tickCount > 0) {
-            console.info(tickCount)
-            self.updateTimeRedraw += self.tickLengthRedraw * tickCount;
-            self.callback.render(self.context);
-        }
-
-        if (self.running) {
-            requestAnimationFrame(self.redraw);
-        }*/
         self.callback.render(self.context);
         if (self.running) {
             requestAnimationFrame(self.redraw);
         }
     };
 
-    this.step = function () {
-        var frameTime = performance.now();
-        var tickCount = Math.floor((frameTime - self.updateTimeStep) / self.tickLengthStep);
-
-        if (tickCount > 0) {
-            self.updateTimeStep += self.tickLengthStep * tickCount;
-            while (tickCount) {
-                self.callback.logic();
-                tickCount -= 1;
-            }
-        }
+    this.update = function () {
+        var currentTime = performance.now();
+        self.callback.logic(currentTime - self.updateTime);
+        self.updateTime = currentTime;
 
         if (self.running) {
-            setTimeout(self.step, self.tickLengthStep);
+            setTimeout(self.update, self.tickLength);
         }
     };
 
@@ -82,10 +59,9 @@ var GAMEGINE = function (config, callback) {
 
 GAMEGINE.prototype.start = function () {
     this.running = true;
-    this.updateTimeRedraw = performance.now();
-    this.updateTimeStep = this.updateTimeRedraw;
+    this.updateTime = performance.now();
     requestAnimationFrame(this.redraw);
-    setTimeout(this.step, this.tickLengthStep);
+    setTimeout(this.update, 0);
 };
 
 GAMEGINE.prototype.stop = function () {
