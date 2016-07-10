@@ -50,7 +50,7 @@ var GAMEGINE = function (config, callback) {
         self.updateTime = currentTime;
 
         if (self.running) {
-            setTimeout(self.update, self.tickLength);
+            setTimeout(self.update, self.tickLength - (performance.now() - currentTime));
         }
     };
 
