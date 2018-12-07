@@ -4,7 +4,7 @@
  authors:
    - Adam Jakubowski
  resources:
-   - https://rawgit.com/ajakubo1/gamegine/master/src/gamegine.js
+   - https://cdn.jsdelivr.net/gh/ajakubo1/gamegine/src/gamegine.js
  normalize_css: no
  wrap: l
  ...
